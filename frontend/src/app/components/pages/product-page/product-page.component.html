@@ -1,0 +1,47 @@
+<div class="container">
+  <img [src]="products.imageUrl" [alt]="products.name">
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{products.name}}
+      </span>
+      <span class="favorite {{products.favorite?'':'not'}}">
+        ❤
+      </span>
+    </div>
+    <div class="stars">
+      <!-- <star-rating [value]="product.stars"
+      [totalstars]="5"
+      checkedcolor="red"
+      uncheckedcolor="black"
+      size="22px"
+      [readonly]="true"></star-rating> -->
+      <span>★★★★</span>
+    </div>
+    <div class="origins">
+      <span *ngFor="let origin of products.origins">
+        {{origin}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of products.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="delivery-time">
+      <span>
+        Delivery in :<strong>{{products.deliveryTime}}</strong> minutes
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{products.price | currency}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+  </div>
+</div>

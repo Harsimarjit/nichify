@@ -14,9 +14,11 @@ export class HomeComponent {
   constructor(private productService:ProductService,activatedRoute:ActivatedRoute) {
     activatedRoute.params.subscribe((params) => {
       if(params['searchTerm'])
-        this.products = this.productService.getAllProductsBySearchTerm(params['searchTerm']);
-        else
-          this.products = productService.getAll();
+      this.products = this.productService.getAllProductsBySearchTerm(params['searchTerm']);
+      else if(params['tag'])
+      this.products = this.productService.getAllProductsByTag(params['tag']);
+      else
+      this.products = productService.getAll();
       })
   }
 
