@@ -16,7 +16,10 @@ export class ProductPageComponent {
     private cartService:CartService,private router:Router){
     activatedRoute.params.subscribe((params) => {
       if(params['id'])
-        this.products = productService.getFoodById(params['id']);
+        productService.getFoodById(params['id'])
+        .subscribe(serverProduct => {
+          this.products = serverProduct;
+        });
     })
   }
 
